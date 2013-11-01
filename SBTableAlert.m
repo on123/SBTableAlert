@@ -31,6 +31,9 @@
 #import "SBTableAlert.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+
 @interface SBTableViewTopShadowView : UIView {}
 @end
 
@@ -278,7 +281,10 @@
 		[_alertView bringSubviewToFront:_shadow];
 		
    UIActivityIndicatorView *progress = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(12, 12, 30, 30)  ];
-        [progress setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [progress setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+        if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            progress.color = [UIColor colorWithRed:0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1];
+        }
         [_alertView addSubview:progress];
         [progress startAnimating];
         
