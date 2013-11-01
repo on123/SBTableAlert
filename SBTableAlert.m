@@ -334,7 +334,7 @@
 		[(SBTableView *)_tableView setAlertStyle:SBTableAlertStyleApple];
 		[_shadow setHidden:NO];
 	} else if (style == SBTableAlertStylePlain) {
-		[_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+		[_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 		[(SBTableView *)_tableView setAlertStyle:SBTableAlertStylePlain];
 		[_shadow setHidden:YES];
 	}
@@ -415,12 +415,19 @@
 	
 	[self increaseHeightBy:resultHeigh];
 	
-	
-	[_tableView setFrame:CGRectMake(12,
-																	_alertView.frame.size.height - resultHeigh - 65,
-																	_alertView.frame.size.width - 24,
-																	resultHeigh)];
-	
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        [_tableView setFrame:CGRectMake(0,
+                                        _alertView.frame.size.height - resultHeigh - 65,
+                                        _alertView.frame.size.width-12,
+                                        resultHeigh)];
+        
+    }
+    else {
+        [_tableView setFrame:CGRectMake(12,
+                                        _alertView.frame.size.height - resultHeigh - 65,
+                                        _alertView.frame.size.width - 21,
+                                        resultHeigh)];
+	}
 	[_shadow setFrame:CGRectMake(_tableView.frame.origin.x,
 															 _tableView.frame.origin.y,
 															 _tableView.frame.size.width,
