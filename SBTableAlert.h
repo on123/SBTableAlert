@@ -30,7 +30,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "TSAlertView.h"
+#import "TSAlertView/TSAlertView/TSAlertView.h"
 
 
 #define kTableCornerRadius 5.
