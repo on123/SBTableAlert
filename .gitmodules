@@ -1,0 +1,3 @@
+[submodule "TSAlertView"]
+	path = TSAlertView
+	url = https://github.com/on123/TSAlertView.git
